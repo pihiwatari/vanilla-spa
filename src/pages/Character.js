@@ -1,25 +1,32 @@
-//creamos una constante (arrow function) con el nombre del archivo js.
-const Character = () => {
-  //generamos una plantilla html como constante
+//Importamos los módulos que utilizan los datos de la api para hacer peticiones.
+import getHash from '../utils/getHash';
+import getData from '../utils/getData';
+
+//Despues actualizamos la funcion Character a async/await
+const Character = async () => {
+  //usando el hash le pasamos un id a esta plantilla
+  const id =  getHash();
+  //sacamos los datos del personaje de la función getData
+  const character = await getData(id);
+
+  //en view, ingresamos los datos dinámicos generados por 'character'
   const view = `
-    <div class='characters-inner'>
-      <article class='characters-card'>
-        <img src='image' alt='name'>
-        <h2>Name</h2>
+    <div class='Characters-inner'>
+      <article class='Characters-card'>
+        <img src='${character.image}' alt='${character.name}'>
+        <h2>${character.name}</h2>
       </article>
-      <article class='characters-card'>
-        <h3>Episodes:</h3>
-        <h3>Status:</h3>
-        <h3>Species:</h3>
-        <h3>Gender:</h3>
-        <h3>Origin:</h3>
-        <h3>Last location:</h3>
+      <article class='Characters-card'>
+        <h3>Episodes: <span>${character.episode.length}</span></h3>
+        <h3>Status: <span>${character.status}</span></h3>
+        <h3>Species: <span>${character.species}</span></h3>
+        <h3>Gender: <span>${character.gender}</span></h3>
+        <h3>Origin: <span>${character.origin.name}</span></h3>
+        <h3>Last location: <span>${character.location.name}</span></h3>
       </article>
     </div>
   `;
-  //retornamos la vista o plantilla de html
   return view;
 };
 
-//exportamos el componente.
 export default Character;

@@ -1,9 +1,9 @@
 //Nos permite acceder a la dirección de las carpetas. Local o en la nube.
 const path = require("path");
-
 //Este plugin trabaja con los archivos HTML para exportar la plantilla de lo creado en js.
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-
+//instalamos el plugin de copy-webpack-plugin en terminal y lo requerimos aqui
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 //???
 const { resolve } = require("path");
 
@@ -55,6 +55,14 @@ module.exports = {
         //Indicamos la ubicación donde guardaermos y el nombre del archivo de HTML.
         filename: './index.html',
       }
-    )
+    ),
+    //instanciamos un nuevo plugin de copiado OJO- REVISAR LA DOCUMENTACION
+    //PARA EVITAR ERRORES AL COMPILAR
+    new CopyWebpackPlugin({
+      patterns: [{
+        from: './src/styles/styles.css',
+        to: ''
+      }]
+    })
   ]
 }
