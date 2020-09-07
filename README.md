@@ -1,0 +1,1 @@
+Hey this is only one test for an SPA using rick and morty's API
