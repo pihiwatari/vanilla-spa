@@ -45,8 +45,8 @@ module.exports = {
   },
   //Creamos una nueva instancia de los plugins que vamos a necesitar.
   plugins: [
-    //instanciamos el plugin de HTML
-    new HTMLWebpackPlugin([
+    //instanciamos el plugin de HTML incluyendo un objeto configurador, no un arreglo
+    new HTMLWebpackPlugin(
       {
         //Injectamos el codigo de js a la plantilla de HTML
         inject: true,
@@ -55,6 +55,6 @@ module.exports = {
         //Indicamos la ubicación donde guardaermos y el nombre del archivo de HTML.
         filename: './index.html',
       }
-    ])
+    )
   ]
 }

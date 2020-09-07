@@ -1,4 +1,6 @@
+//creamos una constante (arrow function) con el nombre del archivo js.
 const Character = () => {
+  //generamos una plantilla html como constante
   const view = `
     <div class='characters-inner'>
       <article class='characters-card'>
@@ -15,7 +17,9 @@ const Character = () => {
       </article>
     </div>
   `;
+  //retornamos la vista o plantilla de html
   return view;
 };
 
+//exportamos el componente.
 export default Character;
